@@ -1,0 +1,164 @@
+\documentclass[ngerman,xcolor={table,dvipsnames},smaller,compress,hyperref={bookmarks,colorlinks}]{beamer}
+
+\usepackage{url}
+\usepackage{listings}
+\usepackage[latin9]{inputenc}
+\usepackage{xcolor,textcomp}
+%\usepackage{auto-pst-pdf}
+\usepackage{pstricks}
+\usepackage{pst-node}
+\usepackage{pst-uml}
+\usepackage{tabularx,threeparttable}
+\usepackage{hyperref}
+
+\title{Packaging for 11 platforms with one tool}
+\author{Jens Rehsack}
+\date{2013}
+
+\usetheme[secheader]{Boadilla}
+\setbeamertemplate{navigation symbols}{}
+
+\newcommand{\perlfilename}[1]{{\color{cyan}{\textit{\begingroup \urlstyle{sf}\Url{#1}}}}}
+\newcommand{\xsfilename}[1]{{\color{olive}{\textit{\begingroup \urlstyle{sf}\Url{#1}}}}}
+\newcommand{\hfilename}[1]{{\color{olive}{\textit{\begingroup \urlstyle{sf}\Url{#1}}}}}
+\newcommand{\cfilename}[1]{{\color{magenta}{\textit{\begingroup \urlstyle{sf}\Url{#1}}}}}
+
+\makeatletter
+\makeatother
+
+%\newcommand{\mypart}[1]{\part{#1}\frame{\partpage \tableofcontents}}
+\newcommand{\mysection}[1]{\section{#1}\frame{\frametitle{Overview}\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]}}
+\newcommand{\mysubsection}[1]{\subsection{#1}\frame{\frametitle{Overview}\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]}}
+\newcommand{\mysubsubsection}[1]{\subsubsection{#1}\frame{\frametitle{Overview}\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/shaded]}}
+
+\begin{document}
+
+\psset{angleA=90,angleB=-90}
+\lstset{language=Perl,
+        basicstyle=\ttfamily,
+        keywordstyle=\color{Maroon},
+        commentstyle=\color{Blue}, 
+        stringstyle=\color{Green},
+        showstringspaces=false}
+
+%\AtBeginSection[]{\begin{frame}<beamer> \frametitle{Overview} \tableofcontents[current, currentsubsection] \end{frame}}
+%\AtBeginSubsection[]{\begin{frame}<beamer> \frametitle{Overview} \tableofcontents[current, currentsubsection] \end{frame}}
+%\AtBeginPart{\begin{frame}<beamer> \frametitle{Overview} \partpage \tableofcontents[current] \end{frame}}
+
+\part{Introduction}
+
+\frame{\maketitle}
+
+\section{Packaging}
+
+\begin{frame}[fragile]
+\frametitle{Why packaging?}
+\begin{block}<1->{Packaging provides}
+\begin{itemize}
+\item Information - always know what is installed
+\item Reliability - always know if things belong together
+\item Useful - easy deployment / rollout
+\end{itemize}
+\end{block}
+
+\begin{block}<2->{Packaging improves \ldots\uncover<3->{everyone know that}}
+
+\begin{itemize}
+\uncover<4->{\item but packaging takes time}
+\uncover<4->{\item can't use dpkg's from developers machine on CentOS production server}
+\uncover<4->{\item dependencies don't compile on backend AIX machine}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{PkgSrc}
+\scriptsize
+\begin{block}<1->{Available on 16+ platforms}
+\begin{itemize}
+\item NetBSD
+\item Solaris / SmartOS / illumos
+\item Linux
+\item Darwin (Mac OS X)
+\item FreeBSD
+\item OpenBSD
+\item IRIX
+\item AIX
+\item DragonFlyBSD
+\item OSF/1 / Tru64
+\item HP-UX
+\item QNX
+\item Haiku
+\item MirBSD (MirOS)
+\item Minix3
+\item Cygwin and Interix
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Mission statement}
+\begin{block}<1->{Optimized for value}
+\begin{itemize}
+\item reduce effort done by people
+\item tagging / branching
+\item bulk building
+\item unattended updates
+\end{itemize}
+\end{block}
+
+\begin{block}<2->{Goal reached by \ldots}
+\begin{itemize}
+\item 100+ active developers packaging
+\item business support (most famous: Joyent/SmartOS)
+\item source based packaging distribution
+\item quarterly formal releases with QA and continuous developer releases
+\item embedded QA for PKGSRC\_DEVELOPERS
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Resources}
+\begin{block}<1->{PkgSrc}
+\url{http://www.pkgsrc.org/}
+\end{block}
+
+\begin{block}<2->{PkgSrc Guide}
+\url{http://www.netbsd.org/docs/pkgsrc/}
+\end{block}
+
+\begin{block}<3->{PkgSrc \ldots Mailing List}
+\url{http://mail-index.netbsd.org/pkgsrc-users/tindex.html}
+\url{http://mail-index.netbsd.org/tech-pkg/tindex.html}
+\url{http://mail-index.netbsd.org/regional-*/}
+\end{block}
+
+\begin{block}<4->{PkgSrc Binaries}
+\url{http://ftp.netbsd.org/pub/pkgsrc/packages/}
+\end{block}
+
+\begin{block}<5->{IRC}
+\url{irc://irc.freenode.net/#pkgsrc}
+\end{block}
+\end{frame}
+
+\section{Finish}
+
+\begin{frame}[fragile]
+\frametitle{Thank You}
+\begin{block}<1->{Questions?}
+Jens Rehsack \textless{}\href{mailto:sno@NetBSD.org}{sno@NetBSD.org}\textgreater{}
+\end{block}
+\end{frame}
+
+%\begin{frame}[fragile]
+%\frametitle{}
+%\begin{block}<1->{}
+%\begin{itemize}
+%\item 
+%\end{itemize}
+%\end{block}
+%\end{frame}
+
+\end{document}
